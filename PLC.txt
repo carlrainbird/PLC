@@ -1,0 +1,108 @@
+- !SOR
+  tag: a
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: this is the rung comment
+  en: true
+  eno: false
+- !XIC
+  tag: b
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: this is ---||--
+  en: false
+  eno: false
+- !XIO
+  tag: c
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: this is ---|/|---
+  en: true
+  eno: false
+- !XIC
+  tag: d
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: jkl
+  en: true
+  eno: false
+- !SOOR
+  tag: e
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: need to store a flag from previous instruction
+  en: true
+  eno: false
+- !Out
+  tag: e
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: '----()----'
+  en: true
+  eno: false
+- !EOOR
+  tag: e
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: need to store a result
+  en: true
+  eno: false
+- !SOR
+  tag: e
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: mno
+  en: true
+  eno: false
+- !Out
+  tag: e
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: mno
+  en: true
+  eno: false
+- !EOOR
+  tag: e
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: mno
+  en: true
+  eno: false
+- !OREVAL
+  tag: e
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: mno
+  en: true
+  eno: false
+- !EOR
+  tag: f
+  alias: this is an alias
+  datatype: bool
+  location: local
+  scope: private
+  comment: pqr
+  en: true
+  eno: false
