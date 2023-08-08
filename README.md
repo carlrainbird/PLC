@@ -1,2 +1,2 @@
 # PLC
-A PLC like prog written in rust ...early days
+A PLC-like prog written in rust ...early days
