@@ -1,0 +1,43 @@
+---
+  
+- !XIC
+    tag_name: "Tank101_HH"
+    data: false  # bit
+    en: false    # input
+    eno: false   # output
+
+- !XIC
+    tag_name: "Tank101_H"
+    data: false
+    en: false
+    eno: false
+
+- !XIC
+    tag_name: "Tank101_L"
+    data: false
+    en: false
+    eno: false
+
+- !XIC
+    tag_name: "Tank101_LL"
+    data: false
+    en: false
+    eno: false
+
+- !TON
+    tag_name: "Tank101"
+    en: false
+    eno: false
+    setpoint: 55
+    acc: 10
+    dn: false
+    tt: false
+
+- !TON
+    tag_name: "Tank102"
+    en: false
+    eno: false
+    setpoint: 100
+    acc: 101
+    dn: false
+    tt: false
