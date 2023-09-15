@@ -1,43 +1,20 @@
 ---
-  
-- !XIC
-    tag_name: "Tank101_HH"
+- !SOR
+    tag_name: "Rung 0"
     data: false  # bit
-    en: false    # input
-    eno: false   # output
 
 - !XIC
     tag_name: "Tank101_H"
-    data: false
-    en: false
-    eno: false
+    data: false  # bit
 
-- !XIC
-    tag_name: "Tank101_L"
-    data: false
-    en: false
-    eno: false
+- !EOR
+    tag_name: "Rung 0 End"
+    data: false  # bit
+   
+- !SOR
+    tag_name: "Rung 1"
+    data: false  # bit
 
-- !XIC
-    tag_name: "Tank101_LL"
-    data: false
-    en: false
-    eno: false
-
-- !TON
-    tag_name: "Tank101"
-    en: false
-    eno: false
-    setpoint: 55
-    acc: 10
-    dn: false
-    tt: false
-
-- !TON
-    tag_name: "Tank102"
-    en: false
-    eno: false
-    setpoint: 100
-    acc: 101
-    dn: false
-    tt: false
+- !EOR
+    tag_name: "Rung 1 End"
+    data: false  # bit      

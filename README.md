@@ -1,2 +1,5 @@
 # PLC
-A PLC-like prog written in rust ...early days
+There are many commercial PLC out there. This is yet another PLC type programme. There is a standard for PLC’s, IEC-61131. I don’t want the software to be restricted to this standard, although it will be hard not to implement the majority of the elements of the standard I think a better approach would be the standard plus more.
+The biggest fault I find with PLC’s is ability to make a super mess of working software. I have some ideas why but I think my ideas are way to opinionated, having worked in the industry for many years.
+I have chosen rust for this out of the blocks programme, I kinda like the detail given to safe code it just makes good sense of getting it correct from the start.
+The code is a composite pattern that is being arranged into a logical file structure. We will see how easy it is to change
