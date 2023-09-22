@@ -1,6 +1,5 @@
 use fltk::button::Button as FltkButton;
 use fltk::enums::Color;
-//use fltk::frame::Frame;
 use fltk::image::SvgImage;
 use fltk::prelude::*;
 

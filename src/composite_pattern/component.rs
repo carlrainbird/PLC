@@ -3,25 +3,19 @@ use crate::composite_pattern::SOR;
 use crate::composite_pattern::EOR;
 use crate::composite_pattern::XIC;
 
-// Define the Component trait/rules
+// Define the Component trait
 pub trait Component {
-    fn mode_select(&mut self,mode: Mode);
-    //fn widget();
+    fn logic(& self){}
+        // Default implementation for logic, which does nothing.
+        // Leaf components can override this.
+    
 }
-
+#[derive(Debug, Clone)] 
 pub struct PowerFlow{
-    enable_input: bool,
-    enable_output: bool,
+    pub enable_input: bool,
+    pub enable_output: bool,
 }
 
- pub enum Mode{
-    Init,
-    Pause,
-    Step,
-    Stop,
-    Run,
-    Edit,
- }
 // Define the ComponentType enum
 #[derive(Debug, Clone, Deserialize)] // Derive Clone for your enum
 pub enum ComponentType {

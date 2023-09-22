@@ -9,8 +9,8 @@ pub use leaf_xic::XIC;
 
 pub mod component;
 
-pub mod root_rung;
-pub use root_rung::Rung;
+pub mod node_rung;
+pub use node_rung::Rung;
 
 pub use component::Component;
 pub use component::ComponentType;

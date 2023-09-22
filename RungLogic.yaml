@@ -1,20 +1,27 @@
 ---
 - !SOR
+    identifier: 123
     tag_name: "Rung 0"
-    data: false  # bit
 
 - !XIC
+    identifier: 456
     tag_name: "Tank101_H"
-    data: false  # bit
-
-- !EOR
-    tag_name: "Rung 0 End"
-    data: false  # bit
    
+- !EOR
+    identifier: 654
+    tag_name: "Rung 0 End"
+    data: false  # bit      
+
 - !SOR
+    identifier: 987
     tag_name: "Rung 1"
     data: false  # bit
 
+- !XIC
+    identifier: 456
+    tag_name: "Tank101_L"
+
 - !EOR
+    identifier: 654
     tag_name: "Rung 1 End"
     data: false  # bit      

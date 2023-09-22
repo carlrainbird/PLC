@@ -1,0 +1,37 @@
+---
+- !RungStart
+    timedatestamp: i128  # a unique identifier
+    alias: "Tank101"
+    datatype: bool
+    data: false
+    comment: "This is the start of the rung"
+    file: "Tank.wang"
+
+- !Boolean
+    timedatestamp: i128
+    alias: "PS101H"
+    datatype: bool
+    data: false
+    comment: "Tank is high"
+
+- !Boolean
+    timedatestamp: i128
+    alias: "PS101HH"
+    datatype: bool
+    data: false
+    comment: "Tank is high high"
+
+- !Boolean
+    timedatestamp: i128 
+    alias: "PS101L"
+    datatype: bool
+    data: false
+    comment: "Tank is low"
+
+- !RungEnd
+    timedatestamp: i128
+    alias: string
+    datatype: bool
+    data: bool
+    comment: "This is the end of the rung"
+    file: "Tank.wang"

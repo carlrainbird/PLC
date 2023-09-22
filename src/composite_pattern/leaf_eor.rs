@@ -1,69 +1,86 @@
-//component_pattern/leaf_eor.rs
-use serde::Deserialize;  
+use rand::Rng;
+use serde::Deserialize;
 use crate::composite_pattern::Component;
-//use crate::factories_gui::{ButtonFactory, ButtonWidget};
-use super::component::Mode;
-use super::component::PowerFlow; 
+use super::component::PowerFlow;
 
-// the serde data
+// Define the EOR struct with serde data
 #[derive(Debug, Clone, Deserialize)] // Derive Clone for your enum
 pub struct EOR {
     pub tag_name: String,
-    pub data: bool,
-}
-pub struct EndOfRung{
-    eor : EOR,  // serde data
-    powerflow: PowerFlow,
 }
 
-impl EndOfRung{
-    fn new()->Self{
-        
-    }
+// Define the EndOfRung component
+#[derive(Debug, Clone)]
+pub struct EndOfRung {
+    pub identifier: Option<i128>,   // A unique identifier for an instance of this structure
+    pub tag_name: Option<String>,
+    data: Option<bool>,
+    powerflow: Option<PowerFlow>,
+    // Add other fields as needed
 }
 
-impl Component for EndOfRung {
-    fn mode_select(&mut self, mode: Mode) {
-        match mode {
-            Mode::Init => {                
-                println!("Init for EOR: {:?}", self.eor);
-                todo!();
-            },
-
-            Mode::Pause => {
-                println!("Logic for EOR: {:?}", self.eor);
-                // Add more logic here if needed
-                todo!();
-            },
-
-            Mode::Step => {
-                println!("Single step EOR: {:?}", self.eor);
-                // Add more logic here if needed
-                todo!();
-            },
-
-            Mode::Run => {
-                println!("Run for EOR: {:?}", self.eor);
-                // Add more logic here if needed
-                todo!();
-            },
-
-            Mode::Stop => {
-                println!("Stop for EOR: {:?}", self.eor);
-                // Add more logic
-
-                todo!();
-            },
-
-            Mode::Edit => {
-                println!("Edit for EOR: {:?}", self.eor);
-                // Add more logic here if needed
-                todo!();
-            },
-
+impl EndOfRung {
+    pub fn new() -> EndOfRung {
+        EndOfRung {
+            identifier: None,  // Initialize as None
+            tag_name: None,
+            data: None,  // Initialize as None
+            powerflow: None,  // Initialize as None
         }
     }
-}
-fn _abc(){
+    // todo this must produce a unique identifier
+    pub fn identifier(mut self) -> Self {
+        // Generate a random i128 identifier
+        let mut rng = rand::thread_rng();
+        let identifier = rng.gen::<i128>();
+        self.identifier = Some(identifier);
+        self
+    }    
 
+    pub fn tag_name(mut self,tag_name: String ) -> Self {
+        self.tag_name = Some(tag_name);
+        self
+    }
+    
+    pub fn data(mut self, data: bool) -> Self {
+        // get data based on tag name
+        self.data = Some(data);
+        self
+    }
+
+    pub fn powerflow(mut self, powerflow: PowerFlow) -> Self {
+        self.powerflow = Some(powerflow);
+        self
+    }
+
+    pub fn build(self) -> EndOfRung {
+        EndOfRung {
+            identifier: self.identifier,
+            tag_name: self.tag_name,
+            data: self.data,
+            powerflow: self.powerflow,
+        }
+        
+    }
+
+    pub fn printdata(self){
+        print!("identifier: {:?} 
+        tag_name {:?} 
+        data {:?} 
+        powerflow {:?}",
+        self.identifier, 
+        self.tag_name, 
+        self.data, 
+        self.powerflow);
+
+    }
+}
+
+
+// Implement the Component trait for EndOfRung
+impl Component for EndOfRung {
+    fn logic(&self) {
+        // This logic function will be called when you iterate through components
+        // Implement any shared logic for all components here if needed
+    }
 }

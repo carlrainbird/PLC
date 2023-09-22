@@ -1,67 +1,84 @@
-//component_pattern/leaf_xic.rs
+use rand::Rng;
 use serde::Deserialize;
 use crate::composite_pattern::Component;
-//use crate::factories_gui::{ButtonFactory, ButtonWidget};
-use super::component::Mode;
-use super::component::PowerFlow; 
+use super::component::PowerFlow;
 
-// data from the .yaml file that hold the order 
-// of execution and PLC instructions
+// Define the EOR struct with serde data
 #[derive(Debug, Clone, Deserialize)] // Derive Clone for your enum
 pub struct XIC {
     pub tag_name: String,
-    pub data: bool,
 }
 
-pub struct ExamineIfClosed{
-    xic: XIC,
-    powerflow: PowerFlow,
-    //widget: ??
+// Define the EndOfRung component
+#[derive(Debug, Clone)]
+pub struct ExamineIfClosed {
+    pub identifier: Option<i128>,   // A unique identifier for an instance of this structure
+    pub tag_name: Option<String>,
+    data: Option<bool>,
+    powerflow: Option<PowerFlow>,
+    // Add other fields as needed
 }
 
-impl ExamineIfClosed{
-    fn init(mut xic: XIC, mut examine_if_closed: ExamineIfClosed  ){
-        examine_if_closed.xic.tag_name = xic.tag_name; 
-        //etc
-    }
-    fn new()->Self{
-    // todo
-    }
-}
-
-impl Component for ExamineIfClosed {
-    fn mode_select(&mut self, mode: Mode) {
-        match mode {
-            Mode::Init => {
-                println!("Logic for XIC: {:?}", self.xic);
-                todo!();
-            },
-            Mode::Pause => {
-                println!("Logic for XIC: {:?}", self.xic);
-                // Add more logic here if needed
-                self.xic.eno = true;
-                todo!();
-            },
-            Mode::Step => {
-                println!("Single step XIC: {:?}", self.xic);
-                // Add more logic here if needed
-                todo!();
-            },
-            Mode::Run => {
-                println!("Run for XIC: {:?}", self.xic);
-                // Add more logic here if needed
-                todo!();
-            },
-            Mode::Stop => {
-                println!("Stop for XIC: {:?}", self.xic);
-                // Add more logic
-                todo!();
-            },
-            Mode::Edit => {
-                println!("Edit for XIC: {:?}", self.xic);
-                // Add more logic here if needed
-                todo!();
-            },
+impl ExamineIfClosed {
+    pub fn new() -> ExamineIfClosed {
+        ExamineIfClosed {
+            identifier: None,  // Set default values or handle them as needed
+            tag_name: None,
+            data: None,
+            powerflow: None,  // Initialize as None  // Set default values or handle them as needed
         }
+    }
+
+    pub fn identifier(mut self) -> Self {
+        // Generate a random i128 identifier
+        let mut rng = rand::thread_rng();
+        let identifier = rng.gen::<i128>();
+        self.identifier = Some(identifier);
+        self
+    }
+    
+    pub fn tag_name(mut self,tag_name: String ) -> Self {
+        self.tag_name = Some(tag_name);
+        self
+    }
+
+    pub fn data(mut self, data: bool) -> Self {
+        self.data = Some(data);
+        self
+    }
+
+    pub fn powerflow(mut self, powerflow: PowerFlow) -> Self {
+        self.powerflow = Some(powerflow);
+        self
+    }
+
+    pub fn build(self) -> ExamineIfClosed {
+        ExamineIfClosed {
+            identifier: self.identifier,
+            tag_name: self.tag_name,
+            data: self.data,
+            powerflow: self.powerflow,
+        }
+    }
+
+    pub fn printdata(self){
+        print!("identifier: {:?} 
+        tag_name {:?} 
+        data {:?} 
+        powerflow {:?}",
+        self.identifier, 
+        self.tag_name, 
+        self.data, 
+        self.powerflow);
+
+    }
+}
+
+
+// Implement the Component trait for EndOfRung
+impl Component for ExamineIfClosed {
+    fn logic(&self) {
+        // This logic function will be called when you iterate through components
+        // Implement any shared logic for all components here if needed
     }
 }
